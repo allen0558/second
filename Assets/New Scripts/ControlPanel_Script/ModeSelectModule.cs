@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -47,7 +47,7 @@ public class ModeSelectModule : MonoBehaviour {
 		}
 		if (GUI.Button(new Rect(222f/1000f*Main.width, 672f/1000f*Main.height, 58f/1000f*Main.width, 22f/1000f*Main.height), "", Main.sty_ButtonEmpty))            
 		{
-			Main.MenuDisplay = "AUTO";
+			Main.MenuDisplay = "MEM";//内容--将AUTO修改为MEM，姓名--刘旋，时间--2013-3-25
 			Main.t2d_ModeSelect = Main.t2d_ModeSelectAUTO;
 			PlayerPrefs.SetInt("ModeSelect", 3);
 			//automode
@@ -117,7 +117,7 @@ public class ModeSelectModule : MonoBehaviour {
 			Main.MenuDisplay = "JOG";	
 			Main.t2d_ModeSelect = Main.t2d_ModeSelectJOG;
 			PlayerPrefs.SetInt("ModeSelect", 6);
-			MoveControl_script.speed_to_move = 0.10201F;
+			MoveControl_script.speed_to_move = 0.16667F;//内容--JOG模式下，慢常速为10m/min=(10/60)m/s,因此spee-to-move=10/60,姓名--刘旋，时间--2013-4-8
 			MoveControl_script.move_rate = Main.move_rate;
 			Main.ProgEDIT = false;	
 			Main.ProgDNC = false;
@@ -132,8 +132,8 @@ public class ModeSelectModule : MonoBehaviour {
 			Main.MenuDisplay = "REF";
 			Main.t2d_ModeSelect = Main.t2d_ModeSelectREF;
 			PlayerPrefs.SetInt("ModeSelect", 7);
-			MoveControl_script.speed_to_move = 0.60201F;
-			MoveControl_script.move_rate = 1.0f;
+			MoveControl_script.speed_to_move = 0.6F;//内容--归零操作的实际速度为36m/min=0.6m/s，而实际速度RunningSpeed=speed—to-move*move-rate，因此speed-to-move应设为0.6,姓名--刘旋，时间--2013-4-8
+			MoveControl_script.move_rate = Main.move_rate;//内容--归零模式下，实际进给速率倍率的修改，不恒为1，与进给面板数值保持一致，姓名--刘旋，时间--2013-4-8
 			Main.ProgEDIT = false;
 			Main.ProgDNC = false;	
 			Main.ProgAUTO = false;
